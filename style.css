@@ -1,0 +1,19 @@
+/* Изменим фон всей страницы */
+body {
+  background-color: #f0f8ff; /* Голубоватый фон */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+
+/* Стили для заголовка */
+h1 {
+  color: #4682b4; /* Синий цвет */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Стили для параграфа */
+p {
+  color: #333;
+  font-size: 18px;
+}
