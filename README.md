@@ -1,5 +1,5 @@
 <html><head>
-        <title>My first site</title>
+<title>My first site</title>
     </head>
     <body>
     <p>Today i started my way nto IT</p>
