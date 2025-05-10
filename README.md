@@ -1,7 +1,1 @@
-<html><head>
-<title>My first site</title>
-    </head>
-    <body>
-    <p>Today i started my way nto IT</p>
-        <h1>Im - frontend desighner</h1>
-    </body></html>
+
