@@ -1,29 +1,49 @@
-// Инициализация темы при загрузке
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateButtonText();
+/* Светлая тема (по умолчанию) */
+:root {
+    --bg-color: #f0f0f0;     /* Фон страницы */
+    --content-bg: #ffffff;   /* Фон контента */
+    --text-color: #000000;   /* Цвет текста */
 }
 
-// Обновление текста кнопки
-function updateButtonText() {
-    const themeToggle = document.getElementById('themeToggle');
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    themeToggle.textContent = currentTheme === 'light' ? '🌓 Тёмный режим' : '🌞 Светлый режим';
+/* Тёмная тема */
+[data-theme="dark"] {
+    --bg-color: #121212;     /* Тёмный фон страницы */
+    --content-bg: #1e1e1e;  /* Тёмный фон контента */
+    --text-color: #ffffff;   /* Белый текст */
 }
 
-// Переключение темы
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateButtonText();
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s;
 }
 
-// Запуск при загрузке страницы
-document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-});
+.content {
+    background-color: var(--content-bg);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.3s;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#colorButton {
+    background: #007BFF;
+    color: white;
+}
+
+#themeToggle {
+    background: var(--button-bg, #4CAF50);
+    color: white;
+}
