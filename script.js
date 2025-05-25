@@ -1,3 +1,7 @@
+// Проверка сохранённой темы при загрузке
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
 const button = document.createElement('button');
 button.className = 'button';
 button.textContent = 'Нажми меня';
