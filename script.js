@@ -1,28 +1,29 @@
-// ===== Кнопка "Нажми меня" (меняет фон) =====
-const colorButton = document.createElement('button');
-colorButton.textContent = 'Нажми меня';
-colorButton.style.margin = '10px'; // Добавим отступ
-document.body.appendChild(colorButton);
+// Инициализация темы при загрузке
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateButtonText();
+}
 
-colorButton.addEventListener('click', () => {
-  const colors = ['#FF5733', '#33FF57', '#3357FF'];
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  document.body.style.backgroundColor = randomColor;
-});
+// Обновление текста кнопки
+function updateButtonText() {
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    themeToggle.textContent = currentTheme === 'light' ? '🌓 Тёмный режим' : '🌞 Светлый режим';
+}
 
-// ===== Кнопка переключения темы =====
-const themeToggle = document.createElement('button');
-themeToggle.textContent = '🌓 Тёмный режим';
-themeToggle.id = 'themeToggle'; // Важно для CSS
-document.body.appendChild(themeToggle);
+// Переключение темы
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateButtonText();
+}
 
-// Проверяем сохранённую тему при загрузке
-const currentTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', currentTheme);
-
-themeToggle.addEventListener('click', () => {
-  const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  themeToggle.textContent = newTheme === 'dark' ? '🌞 Светлый режим' : '🌓 Тёмный режим';
+// Запуск при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 });
